@@ -4,6 +4,7 @@
 int main()
 {
 	std::cout << "Hello Git!";
+	//komentarz
 	getch();
 	return 0;
 }
