@@ -5,6 +5,7 @@
 
 #define PIN            2            //Diods connection pin.
 #define DIODS      16               //Number of diods.
+const byte interruptPin = 16;       //Interruption pin.
 volatile byte interruptCounter =  0;//Number of interrupts 0/1/2.
 unsigned long time[4];                        //Time of loops, 4 -> last loop.
 unsigned long avgTime;
