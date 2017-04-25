@@ -5,25 +5,27 @@
 
 #define PIN            2            //Diods connection pin.
 #define DIODS      16               //Number of diods.
+#define avgTime 4000.0              //Avg time of loop
 static byte interruptPin = 5;       //Interruption pin.
 volatile byte interruptCounter =  0;//Number of interrupts 0/1/2.
 unsigned long time[4];                        //Time of loops, 4 -> last loop.
-unsigned long avgTime;
+//unsigned long avgTime = 4000;
 byte picture[180][16][3];   //We have to write picture generator.
 int pictureLine = 0;
 int lastLine = 0;
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(DIODS, PIN, NEO_GRB + NEO_KHZ800);
 
-bool test=false;
+//bool test=false;
 
 void setup() 
 {
   interrupts();
   Serial.begin(115200);
+  /*
   for(int i=0;i<4;i++)
     time[i]=1;
   avgTime=1;
-  
+  */
   pixels.begin(); // This initializes the NeoPixel library.
   
   pinMode(interruptPin, INPUT_PULLUP);    //Interrupt initialization
@@ -72,6 +74,8 @@ void setup()
 
 void handleInterrupt()
 {
+  /*
+}
   switch(interruptCounter)
   {
     case 0:
@@ -89,8 +93,9 @@ void handleInterrupt()
       interruptCounter=0;   
       break;
   }
+  */
   time[3]=micros();
-  avgTime = (time[0] + time[1] + time[2])/3;  //Average loop time.
+  //avgTime = (time[0] + time[1] + time[2])/3;  //Average loop time.
 }
 
 void loop() {
@@ -110,7 +115,7 @@ void loop() {
     }
   }
   
-  delayMicroseconds((int)(avgTime/180));
+  //delayMicroseconds((int)(avgTime/180));
  }
   
 }
