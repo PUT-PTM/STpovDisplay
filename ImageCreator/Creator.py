@@ -17,10 +17,10 @@ colors = []
 for i in range(180):
     rotated = rotateImage(img, i * (-2))
     for j in range(4, 20):
-        r, g, b = rotated[int((pixels * 40)/2), int(((pixels * 40)/2) + (pixels * j))]
-        colors.append(b)
-        colors.append(g)
+        b, g, r = rotated[int((pixels * 40)/2), int(((pixels * 40)/2) + (pixels * j))]
         colors.append(r)
+        colors.append(g)
+        colors.append(b)
 
 
 plik = open('output.txt', 'w')
