@@ -23,8 +23,11 @@ for i in range(180):
         colors.append(b)
 
 
-plik = open('output.txt', 'w')
+file = open('output.txt', 'w')
 for i in range(180 * 16 * 3):
-    plik.write(str(colors[i]))
-    plik.write("\n")
-plik.close()
+    file.write(str(colors[i]))
+    if((i+1)%48==0):
+        file.write("\n")
+    else:
+        file.write(" ")
+file.close()
