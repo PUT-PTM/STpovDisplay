@@ -23,7 +23,7 @@ void setup()
   interrupts();
   interruptsSwitch = true;
   Serial.begin(115200);
-  
+  Serial.println("Serial start");
   for(int i=0;i<4;i++)
     time[i]=1;
   avgTime=1;
@@ -76,7 +76,12 @@ void setup()
 
 void handleInterrupt()
 {
+  Serial.println("Interurupt ");
   noInterrupts();
+  interruptsSwitch=false;
+  Serial.println("Interurupts deactivated");
+  Serial.println(micros() - time[3]);
+  
   switch(interruptCounter)
   {
     case 0:
@@ -93,15 +98,18 @@ void handleInterrupt()
       time[2] = micros() - time[3];
       interruptCounter=0;   
       break;
-  }
-  time[3]=micros();
+  }  
+  time[3]= micros();
   avgTime = (time[0] + time[1] + time[2])/3;  //Average loop time.
 }
 
-void loop() {
-  if(!interruptsSwitch && ((micros() - time[3])>1000))
+void loop() 
+{
+  if(!interruptsSwitch && ((micros() - time[3])>4000))
   {
     interrupts();
+    interruptsSwitch=true;
+    Serial.println("Interurupts activated");
   }
   
  if((micros() - time[3])<avgTime)
