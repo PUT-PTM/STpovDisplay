@@ -103,7 +103,7 @@ void handleInterrupt()
         break;
     }  
     time[3]= micros();
-    avgTime = (time[0] + time[1] + time[2])/3;  //Average loop time.
+    avgTime = ((time[0] + time[1] + time[2])/3);  //Average loop time.
   }
 }
 
@@ -118,10 +118,12 @@ void loop()
   
  if((micros() - time[3])<avgTime)
  {
-   pictureLine = (((int)((float)(micros() - time[3])/avgTime))*180.0);
-  Serial.println(pictureLine);
+   pictureLine = (int)((((double)(micros() - time[3])/(double)avgTime))*180.0);
+  Serial.println(micros() - time[3]);
+  Serial.println(avgTime);
   if(pictureLine!=lastLine)
   {
+    Serial.println(pictureLine);
     lastLine = pictureLine;
       for(int i=0;i<DIODS;i++)
     {
