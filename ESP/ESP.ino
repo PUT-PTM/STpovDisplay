@@ -23,7 +23,7 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(DIODS, PIN, NEO_GRB + NEO_KHZ800);
 
 void setup() 
 {
-  repair();
+ //8 repair();
   interrupts();
   interruptsSwitch = true;
   Serial.begin(115200);
@@ -136,8 +136,8 @@ void loop()
      // pixels.Color takes RGB values, from 0,0,0 up to 255,255,255
      pixels.setPixelColor(i, pixels.Color(picture[pictureLine][i][0]*150, picture[pictureLine][i][1]*150, picture[pictureLine][i][2]*150)); // Set pixel color.
   
-      pixels.show(); // This sends the updated pixel color to the hardware.
     }
+     pixels.show(); // This sends the updated pixel color to the hardware.
   }
   
   //delayMicroseconds((int)(avgTime/180));
