@@ -10,9 +10,9 @@ How to compile - Run Creator.py in any Python compiler.
 
 Future improvements - We want to create webpage to upload created table to NodeMCUv2.
 
-License - MIT
+License - MITt
 
-Credits - Not yet.
+Credits - Maciej Jaśkiewicz, Krystian Minta
 
 The project was conducted during the Microprocessor Lab course held by the Institute of Control and Information Engineering, Poznan University of Technology.
 
